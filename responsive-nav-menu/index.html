@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navigation Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+    Responsive Nav Pseudo Code
+        1. Define the base HTML structure using semantic HTML.
+        2. Definie the initial styling for navigation CSS (flexbox).
+        3. Set up media queries for responsive design
+        4. Update CSS to allow for animations of the hamburger menu
+    -->
+    <header>
+      <div class="logo-container">
+        <a href="#">
+          <img
+            src="/responsive-nav-menu/images/logo-main.webp"
+            alt="Maxim Biglari"
+          />
+        </a>
+      </div>
+      <div class="mobile-menu-toggle">
+        <a href=""></a><i class="fas fa-bars"></i>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Luxury</a></li>
+          <li><a href="#">Entertainment</a></li>
+          <li><a href="#">Style</a></li>
+          <li><a href="#">Rides</a></li>
+          <li><a href="#">Food &amp; Drink</a></li>
+          <li><a href="#">Travel</a></li>
+          <li><a href="#">Gear</a></li>
+        </ul>
+      </nav>
+      <div class="side-container">
+        <div class="newsletter">
+          <a href="#">Newsletter</a>
+        </div>
+        <div class="subscribe">
+          <a href="#">Subscribe</a>
+        </div>
+        <div class="icon">
+          <a href="#"><i class="fas fa-search"></i></a>
+        </div>
+        <div class="icon">
+          <a href="#"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
