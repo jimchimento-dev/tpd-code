@@ -25,12 +25,12 @@ open index.html
 
 ### Responsive Navigation Project
 
-**Description:** Created a navigation redesign of a popular sports media brand.
-**Location:** tpd-code/responsive-nav-menu
-**Technologies used:** HTML, CSS, JavaScript
+**Description:** Created a navigation redesign of a popular sports media brand. <br />
+**Location:** tpd-code/responsive-nav-menu <br />
+**Technologies used:** HTML, CSS, JavaScript <br />
 
 ### Data Fetch and Rendering with Javascript
 
-**Description:** Fetching mock data from a REST API using JavaScript. Each data object is stored in a card that is responsive depending on viewport size.
-**Location:** tpd-code/data-fetching-and-rendering-js
-**Technologies used:** HTML, CSS, JavaScript
+**Description:** Fetching mock data from a REST API using JavaScript. Each data object is stored in a card that is responsive depending on viewport size. <br />
+**Location:** tpd-code/data-fetching-and-rendering-js <br />
+**Technologies used:** HTML, CSS, JavaScript <br />
