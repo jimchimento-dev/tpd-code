@@ -9,52 +9,96 @@ Data Fetching and Rendering Pseudo Code
 */ 
 
 const fetchData = async () => {
-    try {
+  try {
       const response = await fetch("https://jsonplaceholder.typicode.com/albums/1/photos");
-  
+
       if (!response.ok) {
-        console.log("Network response not ok");
+          console.error("The server responded with an error.");
       }
-  
+
       const data = await response.json();
       return data;
-    } catch (error) {
-      console.error("There was an error fetching data:", error);
-      throw error;
-    }
+  } catch (error) {
+      console.error("Fetch failed, please try again later", error);
   }
+};
 
-  const renderCard = item => {
-      const card = document.createElement("div");
-      card.classList = "card";
-    
-      const cardHeader = document.createElement("h3");
-      cardHeader.classList = "card-header";
-      cardHeader.textContent = item.title;
+const renderCard = (item) => {
+  const card = document.createElement("div");
+  card.classList = "card";
 
-      const cardImg = document.createElement("img");
-      cardImg.classList = "card-img";
-      cardImg.src = item.thumbnailUrl;
-      cardImg.title = item.title;
+  const cardHeader = document.createElement("h3");
+  cardHeader.classList = "card-header";
+  cardHeader.textContent = item.title;
 
-      card.appendChild(cardHeader);
-      card.appendChild(cardImg); 
+  const cardImg = document.createElement("img");
+  cardImg.classList = "card-img";
+  cardImg.alt = item.title;
+  cardImg.setAttribute("data-src", item.thumbnailUrl);
 
-      return card;
-  }
+  card.appendChild(cardHeader);
+  card.appendChild(cardImg);
 
-  const renderCards = async (start, end) => {
-      const albumContainer = document.getElementById("album-container");
-      try {
-          const data = await fetchData();
-          data.slice(start, end).forEach(item => {
-              const card = renderCard(item);
-              albumContainer.appendChild(card);
+  return card;
+};
+
+const lazyLoadImages = () => {
+  const images = document.querySelectorAll('.card-img[data-src]');
+
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+              const lazyImage = entry.target;
+              lazyImage.src = lazyImage.getAttribute('data-src');
+              observer.unobserve(lazyImage);
+          }
+      });
+  }, { threshold: 0.5 });
+
+  images.forEach((image) => {
+      observer.observe(image);
+  });
+};
+
+const renderCards = async (start, end) => {
+  const albumContainer = document.getElementById("album-container");
+  const lazyLoadTrigger = document.getElementById("lazy-load-trigger");
+
+  try {
+      const data = await fetchData();
+      const cardElements = [];
+
+      // Create card elements with data-src attribute
+      data.slice(start, end).forEach((item) => {
+          const card = renderCard(item);
+          cardElements.push(card);
+      });
+
+      // Append cards to the container
+      cardElements.forEach((card) => {
+          albumContainer.appendChild(card);
+      });
+
+      // Start lazy loading
+      lazyLoadImages();
+
+      // Observe the trigger element to dynamically load more images
+      const triggerObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                  // Load more images when trigger becomes visible
+                  renderCards(end, end + 5);
+                  // Unobserve the trigger to avoid continuous loading
+                  triggerObserver.unobserve(entry.target);
+              }
           });
-      }
-      catch(error) {
-          console.error("There was an error rendering the cards:", error);
-      }
-  }
+      }, { threshold: 0.1 });
 
-  renderCards(0, 10);
+      triggerObserver.observe(lazyLoadTrigger);
+  } catch (error) {
+      console.error("Error rendering cards", error);
+  }
+};
+
+// Render 5 cards initially
+renderCards(0, 5);
