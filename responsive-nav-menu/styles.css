@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #ccc;
+}
+
+/* Header Styles */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 30px 15px;
+}
+
+.brand-logo img {
+  max-width: 40%;
+  height: auto;
+  margin-left: 15px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+/* Navigation Styles */
+
+.nav-container,
+.side-container {
+  display: flex;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li,
+.shop,
+.icon,
+.watch-btn {
+  margin-right: 20px;
+}
+
+nav ul li a,
+.shop a,
+.watch-btn a,
+.icon a {
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+}
+
+nav ul li a:hover,
+.shop a:hover,
+.watch-btn a:hover,
+.icon a:hover {
+  color: #cf2e2e;
+}
+
+/* Button Styles */
+
+.watch-btn a {
+  padding: 10px 15px;
+  background-color: #cf2e2e;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.watch-btn a:hover {
+  background-color: #fff;
+  color: #cf2e2e;
+}
+
+/* icon Styles */
+
+.icon-container {
+  display: flex;
+}
+
+.icon {
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* Media Query @768px */
+
+@media (max-width: 768px) {
+  #hamburger-icon {
+    color: #fff;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    font-size: 1.5em;
+    right: 10.5%;
+    top: 5%;
+    cursor: pointer;
+  }
+
+  header {
+    display: block;
+  }
+
+  .brand-logo img {
+    margin-left: 15px;
+    margin-top: 15px;
+    max-width: 30%;
+  }
+
+  nav ul,
+  .watch-btn,
+  .shop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  nav ul li,
+  .watch-btn,
+  .shop {
+    margin-top: 15px;
+  }
+
+  .icon a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3em;
+  }
+
+  .icon-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+  }
+
+  .nav-container,
+  .side-container {
+    display: none;
+    animation: slideIn 0.5s ease;
+  }
+
+  .nav-container.visible {
+    display: block;
+  }
+
+  .side-container.visible {
+    display: block;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .mobile-menu-toggle {
+    right: 25%;
+    top: 3.6%;
+  }
+}

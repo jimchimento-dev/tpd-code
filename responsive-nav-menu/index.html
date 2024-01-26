@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navigation Menu</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/responsive-nav-menu/images/ufc-favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+    Responsive Nav Pseudo Code
+        1. Define the base HTML structure using semantic HTML
+        2. Create initial styles for the navbar (flexbox, colors, etc.)
+        3. Adjust the navigation for mobile views 768px and below
+        4. At medium and below viewports, display hamburger icon. Hide the main and side nav containers by default.
+        5. When hamburger is clicked open, display the main and side nav containers block
+        6. When hamburger is closed, toggle main and side nav classes to display none
+        7. When exiting mobile view, display the items flex again
+        8. Update CSS to allow for animations of the hamburger menu (transform keyframes)
+    -->
+    <header>
+      <div class="brand-logo">
+        <a href="#">
+          <img src="/responsive-nav-menu/images/logo-main.png" alt="UFC" />
+        </a>
+      </div>
+      <div id="mobile-menu-toggle" class="mobile-menu-toggle">
+        <a href="#" id="hamburger-icon"><i class="fas fa-bars"></i></a>
+      </div>
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Rankings</a></li>
+            <li><a href="#">Athletes</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">UFC 300</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="side-container">
+        <div class="watch-btn">
+          <a href="#">Watch</a>
+        </div>
+        <div class="shop">
+          <a href="#">Shop</a>
+        </div>
+        <div class="icon-container">
+          <div class="icon">
+            <a href="#"><i class="fas fa-user-plus"></i></a>
+          </div>
+          <div class="icon">
+            <a href="#"><i class="fas fa-search"></i></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <script src="script.js" defer></script>
+  </body>
+</html>
